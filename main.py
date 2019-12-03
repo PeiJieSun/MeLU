@@ -10,7 +10,7 @@ from evidence_candidate import selection
 
 
 if __name__ == "__main__":
-    master_path= "./ml"
+    master_path= "/home/sunpeijie/files/task/out/melu/ml"
     if not os.path.exists("{}/".format(master_path)):
         os.mkdir("{}/".format(master_path))
         # preparing dataset. It needs about 22GB of your hard disk space.
