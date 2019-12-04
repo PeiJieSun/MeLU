@@ -39,6 +39,8 @@ if __name__ == "__main__":
         melu.load_state_dict(trained_state_dict)
 
     # selecting evidence candidates.
+    '''
     evidence_candidate_list = selection(melu, master_path, config['num_candidate'])
     for movie, score in evidence_candidate_list:
         print(movie, score)
+    '''
