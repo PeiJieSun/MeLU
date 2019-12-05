@@ -5,7 +5,7 @@ import pandas as pd
 class movielens_1m(object):
     def __init__(self):
         #self.user_data, self.item_data, self.score_data = self.load()
-        self.score_data = self.load()
+        #self.score_data = self.load()
 
     def load(self):
         path = "movielens/ml-1m"

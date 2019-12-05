@@ -6,7 +6,7 @@ import numpy as np
 from MetaCF import MetaCF
 from options import config
 from model_training import training
-from data_generation import generate
+from dataset import movielens_1m
 
 
 if __name__ == "__main__":
@@ -30,13 +30,7 @@ if __name__ == "__main__":
         supp_ys_s = []
         query_xs_s = []
         query_ys_s = []
-        '''
-        for idx in range(training_set_size):
-            supp_xs_s.append(pickle.load(open("{}/warm_state/supp_x_{}.pkl".format(master_path, idx), "rb")))
-            supp_ys_s.append(pickle.load(open("{}/warm_state/supp_y_{}.pkl".format(master_path, idx), "rb")))
-            query_xs_s.append(pickle.load(open("{}/warm_state/query_x_{}.pkl".format(master_path, idx), "rb")))
-            query_ys_s.append(pickle.load(open("{}/warm_state/query_y_{}.pkl".format(master_path, idx), "rb")))
-        '''
+
         state = 'warm_state'
         for u_id in training_data[state]:
             for x in training_data[state]['supp_x']:
