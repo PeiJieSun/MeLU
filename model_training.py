@@ -3,16 +3,16 @@ import torch
 import pickle
 import random
 
-from MeLU import MeLU
+from MetaCF import MetaCF
 from options import config, states
 
 
-def training(melu, total_dataset, batch_size, num_epoch, model_save=True, model_filename=None):
+def training(meta_cf, total_dataset, batch_size, num_epoch, model_save=True, model_filename=None):
     if config['use_cuda']:
-        melu.cuda()
+        meta_cf.cuda()
 
     training_set_size = len(total_dataset)
-    melu.train()
+    meta_cf.train()
     for _ in range(num_epoch):
         random.shuffle(total_dataset)
         num_batch = int(training_set_size / batch_size)
@@ -25,7 +25,7 @@ def training(melu, total_dataset, batch_size, num_epoch, model_save=True, model_
                 query_ys = list(d[batch_size*i:batch_size*(i+1)])
             except IndexError:
                 continue
-            melu.global_update(supp_xs, supp_ys, query_xs, query_ys, config['inner'])
+            meta_cf.global_update(supp_xs, supp_ys, query_xs, query_ys, config['inner'])
 
     if model_save:
-        torch.save(melu.state_dict(), model_filename)
+        torch.save(meta_cf.state_dict(), model_filename)
